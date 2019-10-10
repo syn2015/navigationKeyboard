@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Keyboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="img"></div>
+        <input type="text" placeholder=Search class="text" id="searchtext">
+    </header>
+    <div id="main" class="main">
+        <ol id="keyboard" class="macbook-pro">
+            <li><span>~</span>`</li>
+            <li><span>!</span>1</li>
+            <li><span>@</span>2</li>
+            <li><span>#</span>3</li>
+            <li><span>$</span>4</li>
+            <li><span>%</span>5</li>
+            <li><span>^</span>6</li>
+            <li><span>&amp;</span>7</li>
+            <li><span>*</span>8</li>
+            <li><span>(</span>9</li>
+            <li><span>)</span>0</li>
+            <li><span>_</span>-</li>
+            <li><span>+</span>=</li>
+            <li class="special r" id="delete">delete</li>
+            <li class="special l" id="tab">tab</li>
+            <li id="q">Q</li>
+            <li id="w">W</li>
+            <li id="e">E</li>
+            <li id='r'>R</li>
+            <li id="t">T</li>
+            <li id="y">Y</li>
+            <li id="u">U</li>
+            <li id="i">I</li>
+            <li id="o">O</li>
+            <li id="p">P</li>
+            <li><span>{</span>[</li>
+            <li><span>}</span>]</li>
+            <li><span>|</span>\</li>
+            <li class="special l" id="caps-lock">caps lock</li>
+            <li id="a">A</li>
+            <li id="s">S</li>
+            <li id="d">D</li>
+            <li id="f">F</li>
+            <li id="g">G</li>
+            <li id="h">H</li>
+            <li id="j">J</li>
+            <li id="k">K</li>
+            <li id="l">L</li>
+            <li><span>:</span>;</li>
+            <li><span>"</span>'</li>
+            <li class="special r" id="enter"><span>enter</span>return</li>
+            <li class="special shift l">shift</li>
+            <li id="z">Z</li>
+            <li id="x">X</li>
+            <li id="c">C</li>
+            <li id="v">V</li>
+            <li id="b">B</li>
+            <li id="n">N</li>
+            <li id="m">M</li>
+            <li><span>&lt;</span>,</li>
+            <li><span>&gt;</span>.</li>
+            <li><span>?</span>/</li>
+            <li class="special shift r">shift</li>
+            <li class="special tall l">fn</li>
+            <li class="special tall less-padding l">control</li>
+            <li class="special tall less-padding l"><span>alt</span>option</li>
+            <li class="special tall command r"><span>&#8984;</span>command</li>
+            <li class="special tall" id="space"> </li>
+            <li class="special tall command l"><span>&#8984;</span>command</li>
+            <li class="special tall less-padding r"><span>alt</span>option</li>
+            <div class="direction clearfix">
+                <li class="arrow up">&#8593;</li>
+                <li class="arrow " id="flex_left">&#8592;</li>
+                <li class="arrow down ">&#8595;</li>
+                <li class="arrow ">&#8594;</li>
+            </div>
+
+        </ol>
+        </div>
+    <footer class="footer"><p>Matson</p></footer>
+<script>
+
+    var hash=init()
+
+    generateKeyboard(hash)
+
+    listenToUser(hash)
+
+    listenEnter()
+
+    function getFromLocalStorage(name){
+			return JSON.parse(localStorage.getItem(name) || 'null')
+		}
+    function tag(tag_name){
+        return document.createElement(tag_name)
+    }
+    function createButton(id){
+        var button = tag('button')
+        button.textContent = 'M'
+        button.id = id
+        button.onclick = function(events){
+            var button2 = events['target']
+            var img2 = button2.previousSibling
+            var key = button2['id'] 
+            var x = prompt('give me a url') 
+            hash[key] = x  
+            img2.src = 'http://'+x + '/favicon.ico'
+            img2.style.cssText=" "
+            img2.onerror = function(events){
+                events.target.src = '///www.apple.com/favicon.ico'
+                events.style.cssText="opacity: 0.25;"
+            }
+            localStorage.setItem('nomal', JSON.stringify(hash))
+        }
+        return button
+    }
+    function createImage(img_name){
+			var img = tag('img')
+			if(img_name){
+				img.src = '//'+ img_name + '/favicon.ico'
+			}else{
+                img.src = '//www.apple.com/favicon.ico'
+                img.style.cssText="opacity: 0.25;"
+			}
+			img.onerror = function(events){
+                events.target.src = '///www.apple.com/favicon.ico'
+                events.style.cssText="opacity: 0.25;"
+			}
+			return img
+		}
+    function init(){
+        var hash = {'g':"github.com"}
+        var hashInLocalStorage = getFromLocalStorage('nomal') 
+			if(hashInLocalStorage){
+				hash = hashInLocalStorage
+			}
+            return hash
+
+    }
+
+    function generateKeyboard(hash){
+			var row = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+			for(var index =0;index< row.length;index++){
+				var button = createButton(row[index])
+				var img = createImage(hash[row[index]])
+				document.getElementById(row[index]).appendChild(img)
+				document.getElementById(row[index]).appendChild(button)
+			}
+	}	
+	function listenToUser(hash){
+		document.onkeypress = function(events){
+                var key = events['key']
+                var website = hash[key]
+                window.open('http://'+website, '_blank')
+                
+		}
+	}
+    
+
+    function listenEnter(){
+        document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0]
+                if(e && e.keyCode==13){ // enter 
+                    var name = document.getElementById("searchtext").value
+                    window.open("//www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="+name,'_blank')
+                }
+        }
+    }   
+</script>
+</body>
+</html>

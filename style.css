@@ -1,0 +1,180 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+.clerfix{
+    display: block;
+    content:"";
+    clear:both;
+}
+
+body{
+    background: #ccc url(img2.jpeg) no-repeat center center;  
+    background-size: cover;
+    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+}
+header{
+    height:60px;
+    background-color:rgba(155, 155, 155, 0.518);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+input{
+    height:40px;
+    
+}
+.text{
+    width: 250px;
+    border-radius: 30px;
+    border:none;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-right: 15px;
+    outline:none;
+}
+
+header>div{
+    background:url(img3.png) no-repeat center;
+    background-size: cover;
+    position: absolute;
+    margin: 0px 5px 0 0;
+    width: 55px;
+    height: 55px;
+    right: 300px;
+}
+
+footer{
+    height:30px;
+    background-color:rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.main>ol {
+    list-style: none;
+}
+ol li span {
+    display: block;
+    height: 14px;
+    line-height: 42px;
+}
+li, .key{
+    width: 47px;
+    height: 69px;
+    border-radius: 8px;
+    padding: 0 12px;
+    line-height: 69px;
+    position: relative;
+    margin: 0 12px 12px 0;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    box-shadow: 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.direction{
+    height:71px;
+    width:249px;
+}
+.direction>li{
+    float: left;
+}
+.arrow.up {
+    margin: 0 83px 3px;
+    border-radius: 8px 8px 0 0;
+}
+.down {
+    border-radius: 0 0 8px 8px;
+}
+.arrow {
+    height: 38px;
+    line-height: 38px;
+    margin: 0 12px 3px 0;
+    font-size: 20px;
+
+}
+.special span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 0 12px;
+    height: auto;
+    line-height: 36px;
+    font-size: 13px;
+}
+.special{
+    height: 53px;
+    padding-top: 16px;
+    font-size: 16px;
+    position: relative;
+}
+.special.tall {
+    height: 51px;
+    padding-top: 28px;
+}
+.l{
+    text-align: left;
+}
+.r{
+    text-align: right;
+}
+.command {
+    width: 71px;
+}
+
+.shift {
+    width: 154px;
+}
+#space {
+    width: 379px;
+}
+#enter{
+    width:112px;
+}
+#delete{
+    width:96px;
+}
+#tab{
+    width:96px;
+}
+#caps-lock{
+    width:114px;
+}
+.main>ol{
+    width: 1215px;
+    height: 540px;
+    padding: 75px 0 0 16px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content:center;
+}
+img{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    bottom: 0px;
+    right: 0px;
+}
+li>button{
+    background: rgba(202, 202, 200, 0.774);
+    border: none;
+    border-radius: 3px;
+    width:30px;
+    position: absolute;
+    right: 3px;
+    top:5px;
+    display: none;
+}
+li:hover button{
+    display: block;
+}
